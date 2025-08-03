@@ -9,7 +9,7 @@ import './global.css';
 export default function RootLayout() {
   const colorScheme = useColorScheme();
   const [loaded] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
+    SpaceMono: require('../assets/fonts/Quicksand-Bold.ttf'),
   });
 
   if (!loaded) {
