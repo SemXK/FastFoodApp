@@ -17,7 +17,7 @@ const PrimaryButton: React.FC<PrimaryButtonInterface> = ({
   isLoading = false,
 }) => {
   return (
-    <TouchableOpacity activeOpacity={.8} className="custom-btn" onPress={onPress}>
+    <TouchableOpacity disabled={isLoading} activeOpacity={.8} className="custom-btn" onPress={onPress}>
       {leftIcon}
       <View className="flex-center flex-row">
         {isLoading ? 

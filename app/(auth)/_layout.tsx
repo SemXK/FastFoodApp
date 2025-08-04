@@ -6,8 +6,8 @@ import { Dimensions, Image, ImageBackground, KeyboardAvoidingView, Platform, Scr
 const AuthLayout = () =>  {
 
   return (
-    <KeyboardAvoidingView  enabled keyboardVerticalOffset={100} behavior={Platform.OS !== 'ios' ? 'padding' : 'height'}>
-      <ScrollView keyboardShouldPersistTaps="handled" className='h-screen'>
+    <KeyboardAvoidingView   behavior={Platform.OS !== 'ios' ? 'padding' : 'height'}>
+      <ScrollView keyboardShouldPersistTaps="handled" className=''>
         <View 
           className="w-full relative mb-10" 
           style={{

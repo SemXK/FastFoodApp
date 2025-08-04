@@ -1,6 +1,7 @@
+import { getCurrentUser, signIn } from '@/appwrite'
 import PrimaryButton from '@/components/ui-elements/buttons/PrimaryButton'
 import CustonTextInput from '@/components/ui-elements/inputs/TextInput'
-import { Link } from 'expo-router'
+import { Link, router } from 'expo-router'
 import React, { useState } from 'react'
 import { Alert, Text, View } from 'react-native'
 
@@ -16,11 +17,29 @@ const SignIn = () => {
 
   // $ functions
   const handleSignIn = async () => {
+    setIsLoading(true)
     if(!email || !password){
       Alert.alert(
         'Insert Email and Password',
         
       )
+    }
+    
+    try{
+      await signIn({email, password})
+    }
+    catch(e: any){
+      // User might have an active session
+      try{
+        await getCurrentUser()
+        router.replace("/")
+      }
+      catch(er:any) {
+        Alert.alert("Error", er?.message as string)
+      }
+    }
+    finally{
+      setIsLoading(false)
     }
   }
 

@@ -1,6 +1,7 @@
+import { createUser } from '@/appwrite'
 import PrimaryButton from '@/components/ui-elements/buttons/PrimaryButton'
 import CustonTextInput from '@/components/ui-elements/inputs/TextInput'
-import { Link } from 'expo-router'
+import { Link, router } from 'expo-router'
 import React, { useState } from 'react'
 import { Alert, Text, View } from 'react-native'
 
@@ -27,10 +28,17 @@ const SignUp = () => {
     }
 
     try{
+      const res = await createUser({
+        name,
+        email,
+        password
+      })
+      console.log("res", res)
 
+      router.replace('/')
     }
-    catch(e){
-
+    catch(e:any){
+      Alert.alert('Error', e?.message as string);
     }
     finally{
       setIsLoading(false)
