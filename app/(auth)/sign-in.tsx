@@ -28,7 +28,8 @@ const SignIn = () => {
     try{
       await signIn({email, password})
     }
-    catch(e: any){
+    catch(e){
+
       // User might have an active session
       try{
         await getCurrentUser()

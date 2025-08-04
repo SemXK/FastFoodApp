@@ -1,6 +1,6 @@
+import * as Sentry from '@sentry/react-native';
 import { Account, Avatars, Client, Databases, ID, Query } from 'react-native-appwrite';
 import { User } from './interfaces';
-
 export const appwriteConfig = {
   // * General
   endpoint: process.env.EXPO_PUBLIC_APPWRITE_ENDPOINT as string,
@@ -55,7 +55,8 @@ export const createUser = async (
     )
 
   }
-  catch(e) {
+  catch(e: any) {
+    Sentry.captureEvent(e)
     throw new Error(e as string)
   }
 }
@@ -65,7 +66,8 @@ export const signIn = async (payload: Partial<User>) => {
 
     await account.createEmailPasswordSession(payload.email!, payload.password!);
   }
-  catch (e) {
+  catch (e:any) {
+    Sentry.captureEvent(e)
     throw new Error(e as string);
   }
 }
@@ -84,7 +86,8 @@ export const getCurrentUser = async ()  => {
 
     return currentUser.documents[0]
   }
-  catch(e){
+  catch(e: any){
+    Sentry.captureEvent(e)
     throw new Error(e as string)
   }
 }
