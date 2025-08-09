@@ -1,12 +1,12 @@
 import cn from "clsx"
 import React from 'react'
-import { Image, Text, View } from 'react-native'
+import { Image, ImageSourcePropType, Text, View } from 'react-native'
 
 
 
 interface TabBarIconInterface {
   focused: boolean,
-  icon: string,
+  icon: ImageSourcePropType | undefined,
   title: string
 }
 const TabBarIcon = ({focused, icon, title}:TabBarIconInterface) => {

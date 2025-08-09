@@ -13,7 +13,7 @@ const Header = () => {
           <Image source={images.arrowDown} className="size-2"/>
         </TouchableOpacity>
       </View>
-      <View className="Flex-end">
+      <View className="flex-end">
         <CartButton />
       </View>
     </View>

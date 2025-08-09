@@ -1,5 +1,5 @@
-import { getCurrentUser } from '@/appwrite';
 import { User } from '@/interfaces';
+import { getCurrentUser } from '@/lib/appwrite';
 import { create } from 'zustand';
 
 type AuthState = {

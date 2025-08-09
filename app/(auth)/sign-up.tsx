@@ -1,6 +1,6 @@
-import { createUser } from '@/appwrite'
 import PrimaryButton from '@/components/ui-elements/buttons/PrimaryButton'
 import CustonTextInput from '@/components/ui-elements/inputs/TextInput'
+import { createUser } from '@/lib/appwrite'
 import { Link, router } from 'expo-router'
 import React, { useState } from 'react'
 import { Alert, Text, View } from 'react-native'
@@ -33,8 +33,6 @@ const SignUp = () => {
         email,
         password
       })
-      console.log("res", res)
-
       router.replace('/')
     }
     catch(e:any){
