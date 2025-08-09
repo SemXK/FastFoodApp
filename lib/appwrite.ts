@@ -100,11 +100,11 @@ export const getCurrentUser = async ()  => {
   }
 }
 
-export const getMenu = async( {category}: any) => {
+export const getMenu = async( {category, query}: any) => {
   try {
     const queries: string[] = []
     if(category) queries.push(Query.equal('categories', category))
-
+    if(query) queries.push(Query.search('name', query));
     const menus = await databases.listDocuments(
       appwriteConfig.databaseId,
       appwriteConfig.menuCollectionId,
@@ -114,7 +114,7 @@ export const getMenu = async( {category}: any) => {
     return menus
   }
   catch(e:any) {
-    throw new Error(e.message + "Nigga" as string)
+    throw new Error(e.message as string)
   }
 }
 export const getCategories = async() => {
